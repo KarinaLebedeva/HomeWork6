@@ -1,0 +1,42 @@
+﻿/* Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+0, 7, 8, -2, -2 -> 2
+1, -7, 567, 89, 223-> 4*/
+
+Console.WriteLine ("Введите числа:");
+string numbers = Console.ReadLine();
+
+string [] newNumbers = new string [numbers.Length];
+int a = 0;
+for (int i = 0; i < newNumbers.Length; i++)
+{
+  if (numbers[i] == ',')
+  {
+    a++;
+  }
+  else
+  {
+    newNumbers[a] = newNumbers[a]+$"{numbers[i]}";
+  }
+}
+a++;
+int [] resultNumbers = new int[a];
+PrintArray (resultNumbers, newNumbers);
+int sum = 0;
+for (int i = 0; i < a; i++)
+{
+  if (resultNumbers[i]>0)
+  {
+    sum++;
+  }
+}
+Console.WriteLine ("Количество чисел больше 0: "+sum);
+
+void PrintArray (int [] array, string [] string1)
+{
+  for (int i = 0; i < array.Length; i++)
+  {
+  array[i] = Convert.ToInt32(string1[i]);
+  Console.Write (array[i]+"  ");
+  }
+Console.WriteLine();
+}
